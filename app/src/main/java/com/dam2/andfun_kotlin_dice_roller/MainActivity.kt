@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import java.util.*
+import java.security.SecureRandom
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        val randomInt = Random().nextInt(6) + 1
+        var randomInt = SecureRandom()
+        randomInt.setSeed(randomInt.generateSeed(6)+1)
 
         val drawableResource = when (randomInt) {
             1 -> R.drawable.ic_brujula
